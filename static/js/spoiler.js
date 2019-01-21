@@ -1,0 +1,17 @@
+$(document).ready(function()
+{
+    $('.spoller_container').click(function(e)
+    {
+        e.preventDefault();
+        if($(this).hasClass('active'))
+        {
+            $(this).closest('.spoller_container').find('.spoller').slideUp();
+            $(this).removeClass('active');
+        }
+        else
+        {
+            $(this).closest('.spoller_container').find('.spoller').slideDown();
+            $(this).addClass('active');
+        }
+    });
+});

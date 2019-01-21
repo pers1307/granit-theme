@@ -1,0 +1,100 @@
+.bx-wrapper {
+  position: relative;
+  margin: 0;
+  padding: 0; }
+
+.bx-wrapper img {
+  vertical-align: top; }
+
+/** THEME
+===================================*/
+.bx-wrapper .bx-viewport {
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0); }
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+  position: absolute; }
+
+/* PAGER */
+.bx-wrapper .bx-pager {
+  text-align: center;
+  font-size: 14px;
+  color: #000; }
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline; }
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+  display: block;
+  text-indent: -9999px;
+  width: 16px;  
+    background: url(../images/pager1.png) no-repeat;
+  height: 16px;
+  color: #000;
+  outline: 0;
+  text-decoration: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 4px; }
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover {
+    background: url(../images/pagerhov.png);
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+
+  background: url(../images/pageract.png);
+
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+.bx-wrapper .bx-prev {
+  left: 10px; }
+
+.bx-wrapper .bx-next {
+  right: 10px; }
+
+.bx-wrapper .bx-prev:hover {
+  background-position: 0 0; }
+
+.bx-wrapper .bx-next:hover {
+  background-position: -43px 0; }
+
+.bx-wrapper .bx-controls-direction a {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  outline: 0;
+  width: 40px;
+  height: 40px;
+  text-indent: -9999px;
+  z-index: 9; }
+
+.bx-wrapper .bx-controls-direction a.disabled {
+  display: none; }
+
+/* IMAGE CAPTIONS */
+.bx-wrapper .bx-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #666 \9;
+  background: rgba(80, 80, 80, 0.75);
+  width: 100%; }
+
+.bx-wrapper .bx-caption span {
+  color: #fff;
+  font-family: Arial;
+  display: block;
+  font-size: .85em;
+  padding: 10px; }
+
+/*# sourceMappingURL=jquery.bxslider.css.map */
