@@ -1,6 +1,10 @@
 <?php
 // Хук для подключения стилей и скриптов
-add_action( 'wp_enqueue_scripts', 'granit_scripts' );
+add_action('wp_enqueue_scripts', 'granit_scripts');
+// Хук для настройки темы
+add_action('after_setup_theme', 'granit_theme_setup');
+
+require get_template_directory() . '/controllers/customizer.php';
 
 /** Функция для подключения стилей и скриптов */
 function granit_scripts()
@@ -37,6 +41,19 @@ function granit_scripts()
 //    wp_enqueue_style( 'untheme-custom-style', get_template_directory_uri() . '/assets/css/style.css' );
 //    wp_enqueue_script( 'untheme-scripts', get_template_directory_uri() . '/assets/js/scripts.js' );
 }
+
+// Настройки темы
+function granit_theme_setup() {
+    // Logo Support
+    add_theme_support('custom-logo');
+
+//    // Featured Image
+//    add_theme_support('post-thumbnails');
+//    register_nav_menus(array(
+//        'primary'	=> __('Primary Menu')
+//    ));
+}
+
 
 
 
