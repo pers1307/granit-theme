@@ -1,0 +1,41 @@
+@mixin both
+{
+  &:after
+  {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin box-sizing
+{
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin skewX ($deg: -20)
+{
+  -webkit-transform: skewX($deg+deg);
+  -moz-transform: skewX($deg+deg);
+  -ms-transform: skewX($deg+deg);
+  -o-transform: skewX($deg+deg);
+  transform: skewX($deg+deg);
+}
+
+
+@mixin transition ($speed: 0.2)
+{
+  -webkit-transition: all $speed+s linear;
+  -moz-transition: all $speed+s linear;
+  transition: all $speed+s linear;
+}
+
+@mixin translate ($Ox: 0, $Oy: 0, $Oz: 0)
+{
+  -webkit-transform: translateX($Ox) translateY($Oy) translateZ($Oz);
+  -moz-transform: translateX($Ox) translateY($Oy) translateZ($Oz);
+  -ms-transform: translateX($Ox) translateY($Oy) translateZ($Oz);
+  -o-transform: translateX($Ox) translateY($Oy) translateZ($Oz);
+  transform: translateX($Ox) translateY($Oy) translateZ($Oz);
+}
