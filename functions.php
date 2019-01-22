@@ -1,4 +1,48 @@
 <?php
+// Хук для подключения стилей и скриптов
+add_action( 'wp_enqueue_scripts', 'granit_scripts' );
+
+/** Функция для подключения стилей и скриптов */
+function granit_scripts()
+{
+    wp_register_style(
+        'granit-reset',
+        get_template_directory_uri() . '/assets/css/reset.css'
+    );
+    wp_register_style(
+        'granit-content',
+        get_template_directory_uri() . '/assets/css/content.css'
+    );
+    wp_register_style(
+        'granit-style',
+        get_template_directory_uri() . '/assets/css/style.css'
+    );
+    wp_register_style(
+        'granit-bxslider',
+        get_template_directory_uri() . '/assets/css/jquery.bxslider.css'
+    );
+    wp_enqueue_style('granit-reset');
+    wp_enqueue_style('granit-content');
+    wp_enqueue_style('granit-style');
+    wp_enqueue_style('granit-bxslider');
+
+//    wp_register_script(
+//        'wfm-script',
+//        plugins_url('ajax_script.js', __FILE__),
+//        ['jquery']
+//    );
+//    wp_enqueue_script('wfm-script');
+//
+//    wp_enqueue_style( 'untheme-style', get_stylesheet_uri() );
+//    wp_enqueue_style( 'untheme-custom-style', get_template_directory_uri() . '/assets/css/style.css' );
+//    wp_enqueue_script( 'untheme-scripts', get_template_directory_uri() . '/assets/js/scripts.js' );
+}
+
+
+
+
+
+
 /**
  * Functions and definitions
  *

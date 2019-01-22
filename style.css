@@ -1,24 +1,10 @@
 /*!
-Theme Name: untheme
-Theme URI: https://github.com/taniarascia/untheme
-Author: Tania Rascia
-Author URI: https://www.taniarascia.com
-Description: Base theme for development
+Theme Name: Granit
+Theme URI: https://github.com/pers1307/wordpress-themes
+Author: pers1307
+Author URI: https://github.com/pers1307
+Description: Theme for granit site
 Version: 1.0.0
 License: GNU General Public License v2 or later
-Text Domain: untheme
+Text Domain: granit
 */
-
-/* Text meant only for screen readers. */
-.screen-reader-text {
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	width: 1px;
-	margin: -1px;
-	padding: 0;
-	border: 0;
-	overflow: hidden;
-	position: absolute !important;
-	word-wrap: normal !important;
-}
