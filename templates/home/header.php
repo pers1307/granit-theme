@@ -14,6 +14,20 @@
                 </a>
             </div>
             <div class="headerMenu">
+                <?php wp_nav_menu(array(
+                    'them_location' => 'primary'
+                )); ?>
+
+<!--                --><?php
+//                wp_nav_menu(array(
+//                    'theme_location'  => 'primary',
+//                    'depth'           => 2,
+//                    'container'       => false,
+//                    'menu_class'      => 'nav nav-pills pull-right',
+//                    'fallback'        => 'wp_bootstrap_navwalker::fallback',
+//                    'walker'          => new wp_bootstrap_navwalker()
+//                ));
+//                ?>
 
                 <nav class="tophead">
                     <div><a href="">О компании</a></div>
@@ -22,12 +36,22 @@
                 </nav>
 
                 <div class="bothead">
-                    <div class="email">
-                        Электронная почта: <a href="mailto:prirodnyy-kamen@mail.ru">prirodnyy-kamen@mail.ru</a>
-                    </div>
-                    <div class="number">
-                        <a href=""><span>8 343 </span>200 60 40</a>
-                    </div>
+                    <? $email = get_theme_mod('header_email', ''); ?>
+                    <? if(!empty($email)): ?>
+                        <div class="email">
+                            Электронная почта: <a href="mailto:<?= $email ?>"><?= $email ?></a>
+                        </div>
+                    <? endif; ?>
+
+                    <? $headerPhoneOne = get_theme_mod('header_phone_one', ''); ?>
+                    <? $headerPhoneTwo = get_theme_mod('header_phone_two', ''); ?>
+
+                    <? if(!empty($headerPhoneOne) && !empty($headerPhoneTwo)): ?>
+                        <div class="number">
+                            <a href="tel:<?= $headerPhoneOne ?><?= $headerPhoneTwo ?>"><span><?= $headerPhoneOne ?> </span><?= $headerPhoneTwo ?></a>
+                        </div>
+                    <? endif; ?>
+
                     <div class="callback">
                         <a href="">Обратный звонок</a>
                     </div>

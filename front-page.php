@@ -172,14 +172,28 @@
                     <div class="quest">
                         Остались вопросы?
                     </div>
+
                     <div class="number">
-                        <div><span>8 343 </span>200 60 40</div>
-                        <span>Пн-Пт: с 9:00 до 20:00</span>
+                        <? $headerPhoneOne = get_theme_mod('header_phone_one', ''); ?>
+                        <? $headerPhoneTwo = get_theme_mod('header_phone_two', ''); ?>
+                        <? if(!empty($headerPhoneOne) && !empty($headerPhoneTwo)): ?>
+                            <div><span><?= $headerPhoneOne ?> </span><?= $headerPhoneTwo ?></div>
+                        <? endif; ?>
+
+                        <? $timeWork = get_theme_mod('time_work', ''); ?>
+                        <? if(!empty($timeWork)): ?>
+                            <span><?= $timeWork ?></span>
+                        <? endif; ?>
                     </div>
-                    <div class="emailfoot">
-                        <div>E-mail:</div>
-                        <a href="mailto:support@granit66.ru">support@granit66.ru</a>
-                    </div>
+
+                    <? $email = get_theme_mod('header_email', ''); ?>
+                    <? if(!empty($email)): ?>
+                        <div class="emailfoot">
+                            <div>E-mail:</div>
+                            <a href="mailto:<?= $email ?>"><?= $email ?></a>
+                        </div>
+                    <? endif; ?>
+
                     <div class="callbackf">
                         <a class="callback" href="#">Обратный звонок</a>
                     </div>

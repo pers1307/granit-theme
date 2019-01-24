@@ -44,8 +44,6 @@ function granit_customize_register($wp_customize) {
      * todo: добавить отображение блока в целом
      */
 
-
-
     $wp_customize->add_section('advantages', array(
         'title'	=> __('Advantages on home', 'popular'),
         'description'	=> sprintf(__('Options for advantages on home', 'advantages')),
@@ -60,6 +58,55 @@ function granit_customize_register($wp_customize) {
         'section'		=> 'advantages',
         'priority'		=> 20
     ));
+
+    /**
+     * Header section
+     */
+    $wp_customize->add_section('header', array(
+        'title'	=> __('Settings', 'header'),
+        'description'	=> sprintf(__('Settings for site', 'advantages')),
+        'priority'	=> 130
+    ));
+    $wp_customize->add_setting('header_email', array(
+        'default'		=> _x('granit@mail.ru', 'header'),
+        'type'			=> 'theme_mod'
+    ));
+    $wp_customize->add_control('header_email', array(
+        'label'			=> __('Email', 'header'),
+        'section'		=> 'header',
+        'priority'		=> 20
+    ));
+
+    $wp_customize->add_setting('header_phone_one', array(
+        'default'		=> _x('8 343', 'header'),
+        'type'			=> 'theme_mod'
+    ));
+    $wp_customize->add_control('header_phone_one', array(
+        'label'			=> __('First part of phone', 'header'),
+        'section'		=> 'header',
+        'priority'		=> 20
+    ));
+
+    $wp_customize->add_setting('header_phone_two', array(
+        'default'		=> _x('200 60 40', 'header'),
+        'type'			=> 'theme_mod'
+    ));
+    $wp_customize->add_control('header_phone_two', array(
+        'label'			=> __('Second part of phone', 'header'),
+        'section'		=> 'header',
+        'priority'		=> 20
+    ));
+
+    $wp_customize->add_setting('time_work', array(
+        'default'		=> _x('Mn-Fr: from 9:00 to 20:00', 'header'),
+        'type'			=> 'theme_mod'
+    ));
+    $wp_customize->add_control('time_work', array(
+        'label'			=> __('Time to work', 'header'),
+        'section'		=> 'header',
+        'priority'		=> 20
+    ));
+
 
 
 
