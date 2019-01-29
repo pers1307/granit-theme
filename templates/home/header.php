@@ -14,20 +14,25 @@
                 </a>
             </div>
             <div class="headerMenu">
-                <?php wp_nav_menu(array(
-                    'them_location' => 'primary'
-                )); ?>
+                <nav class="tophead">
+                    <?php wp_nav_menu(array(
+                        'them_location' => 'primary',
+//                        'walker'        => new NavWalker()
+                    )); ?>
+                </nav>
 
-<!--                --><?php
-//                wp_nav_menu(array(
-//                    'theme_location'  => 'primary',
+                <?
+                wp_nav_menu(array(
+                    'them_location'  => 'primary',
+//                    'menu_id'        => 'primary-menu',
 //                    'depth'           => 2,
 //                    'container'       => false,
 //                    'menu_class'      => 'nav nav-pills pull-right',
-//                    'fallback'        => 'wp_bootstrap_navwalker::fallback',
-//                    'walker'          => new wp_bootstrap_navwalker()
-//                ));
-//                ?>
+                    'fallback'        => 'NavWalker::fallback',
+                    'walker'          => new NavWalker()
+                ));
+
+                ?>
 
                 <nav class="tophead">
                     <div><a href="">О компании</a></div>

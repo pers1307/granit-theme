@@ -26,8 +26,21 @@
 		wp_nav_menu( array(
 			'theme_location' => 'menu-1',
 			'menu_id'        => 'primary-menu',
+            'fallback'        => 'NavWalker::fallback',
+            'walker'          => new NavWalker()
 		) );
-		?>
+
+        wp_nav_menu(array(
+            'theme_location' => 'menu-1',
+            'menu_id'        => 'primary-menu',
+            'depth'           => 2,
+            'container'       => false,
+            'menu_class'      => 'nav nav-pills pull-right',
+            'fallback'        => 'NavWalker::fallback',
+            'walker'          => new NavWalker()
+        ));
+
+        ?>
 	</nav>
 </header>
 

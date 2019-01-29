@@ -3,8 +3,11 @@
 add_action('wp_enqueue_scripts', 'granit_scripts');
 // Хук для настройки темы
 add_action('after_setup_theme', 'granit_theme_setup');
+// Хук для создания своих типов записей
+add_action('init', 'granit_create_custom_posts');
 
 require get_template_directory() . '/controllers/customizer.php';
+require get_template_directory() . '/customize/NavWalker.php';
 
 /** Функция для подключения стилей и скриптов */
 function granit_scripts()
@@ -43,7 +46,8 @@ function granit_scripts()
 }
 
 // Настройки темы
-function granit_theme_setup() {
+function granit_theme_setup()
+{
     // Logo Support
     add_theme_support('custom-logo');
 
@@ -54,7 +58,124 @@ function granit_theme_setup() {
 //    ));
 }
 
+function granit_create_custom_posts()
+{
+    register_post_type('Slider',
+        array(
+            'labels' => array(
+                'name' => __('Slider', 'granit'),
+            ),
+            'public'       => true,
+            'hierarchical' => false,
+            'supports'     => [
+                'title',
+                'editor',
+            ],
+            'has_archive'  => false,
+            'rewrite'      => true,
+        )
+    );
 
+    register_post_type('Portfolio',
+        array(
+            'labels' => array(
+                'name' => __('Portfolio', 'granit'),
+            ),
+            'public'       => true,
+            'hierarchical' => false,
+            'supports'     => [
+                'title',
+                'editor',
+                'thumbnail',
+            ],
+            'has_archive'  => false,
+            'rewrite'      => true,
+        )
+    );
+
+    register_post_type('News',
+        array(
+            'labels' => array(
+                'name' => __('News', 'granit'),
+            ),
+            'public'       => true,
+            'hierarchical' => false,
+            'supports'     => [
+                'title',
+                'editor',
+                'thumbnail',
+                /**
+                 * date ?
+                 */
+            ],
+            'has_archive'  => false,
+            'rewrite'      => true,
+        )
+    );
+
+    /**
+     * taxonomy можно использовать как характеристики для объектов
+     */
+    register_taxonomy(
+        'Category_rocks',
+        'Rocks',
+        [
+            'label'   => 'Category rocks',
+            'rewrite' => ['slug' => 'Category-rocks'],
+            'hierarchical' => true,
+        ]
+    );
+
+    register_post_type('Rocks',
+        array(
+            'labels' => array(
+                'name'          => __('Rocks', 'granit'),
+                'singular_name' => __('Rock', 'granit'),
+            ),
+            'public'       => true,
+            'hierarchical' => true,
+            'supports'     => [
+                'title',
+                'editor',
+                'thumbnail',
+
+                /**
+                 * characteristics
+                 */
+                'custom-fields',
+                /**
+                 * price
+                 */
+            ],
+            'has_archive'  => false,
+            'rewrite'      => true,
+            'taxonomies'   => array(
+                'Category_rocks',
+            )
+        )
+    );
+}
+
+/**
+ * Удалить дефолтные посты!
+ */
+add_action( 'admin_menu', 'remove_default_post_type' );
+
+function remove_default_post_type() {
+    remove_menu_page( 'edit.php' );
+}
+
+add_action( 'admin_bar_menu', 'remove_default_post_type_menu_bar', 999 );
+
+function remove_default_post_type_menu_bar( $wp_admin_bar ) {
+    $wp_admin_bar->remove_node( 'new-post' );
+}
+
+add_action( 'wp_dashboard_setup', 'remove_draft_widget', 999 );
+
+function remove_draft_widget(){
+    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+}
 
 
 
@@ -123,26 +244,3 @@ function untheme_scripts() {
 	wp_enqueue_script( 'untheme-scripts', get_template_directory_uri() . '/assets/js/scripts.js' );
 }
 add_action( 'wp_enqueue_scripts', 'untheme_scripts' );
-
-function untheme_create_post_custom_post() {
-	register_post_type('custom_post', 
-		array(
-		'labels' => array(
-			'name' => __('Custom Post', 'untheme'),
-		),
-		'public'       => true,
-		'hierarchical' => true,
-		'supports'     => array(
-			'title',
-			'editor',
-			'excerpt',
-			'custom-fields',
-			'thumbnail',
-		), 
-		'taxonomies'   => array(
-				'post_tag',
-				'category',
-		) 
-	));
-}
-add_action('init', 'untheme_create_post_custom_post'); // Add our work type
